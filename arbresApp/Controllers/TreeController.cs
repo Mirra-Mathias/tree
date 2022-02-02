@@ -20,7 +20,6 @@ namespace arbresApp.Controllers
     [Route("[controller]")]
     public class TreeController : Controller
     {
-
         private Tree[] trees;
 
         public TreeController()
@@ -38,10 +37,57 @@ namespace arbresApp.Controllers
             IEnumerable<Tree> trees = this.trees;
             return trees;
         }
-        
-        public IEnumerable<Tree> Get(int id)
+
+        [HttpGet("{id}")]
+        public IEnumerable<Tree> Get(string id)
         {
-            IEnumerable<Tree> trees = this.trees;
+            var list = this.trees;
+            var query =
+                from tree in list
+                where tree.recordid == id
+                select tree;
+
+            IEnumerable<Tree> trees = query;
+            return trees;
+        }
+
+        [HttpGet("filtreName/{libel}")]
+        public IEnumerable<Tree> GetFiltreName(string libel)
+        {
+            var list = this.trees;
+            var query =
+                from tree in list
+                where tree.fields.libellefrancais.Contains(libel, StringComparison.InvariantCultureIgnoreCase)
+                select tree;
+
+            IEnumerable<Tree> trees = query;
+            return trees;
+        }
+
+        [HttpGet("trier/{etat}")]
+        public IEnumerable<Tree> GetTrier(string etat)
+        {
+            var list = this.trees;
+            var query =
+                from tree in list
+                select tree;
+            
+            if (etat == "asc")
+            {
+                query =
+                    from tree in list
+                    orderby tree.fields.dateplantation
+                    select tree;
+            }
+            else if (etat == "desc")
+            {
+                query =
+                    from tree in list
+                    orderby tree.fields.dateplantation descending
+                    select tree;
+            }
+
+            IEnumerable<Tree> trees = query;
             return trees;
         }
     }

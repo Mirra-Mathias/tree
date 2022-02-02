@@ -21,3 +21,11 @@ interface WeatherForecast {
   temperatureF: number;
   summary: string;
 }
+
+
+interface WeatherForecast {
+  dataseod: string;
+  temperatureC: number;
+  temperatureF: number;
+  summary: string;
+}
