@@ -1,0 +1,24 @@
+.rowClickable {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.rowClickable:hover {
+    background: rgb(218, 231, 245);
+}
+
+.input-wrapper {
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+.filter-arbre {
+    background: rgb(218, 231, 245);
+    border-radius:5px;
+    padding:0.5em;
+    display: flex;
+    align-items: baseline;
+    gap: 1em;
+    font-weight: bold;
+}
