@@ -22,11 +22,19 @@ export interface Tree {
 export class ListTreeComponent implements OnInit {
   public trees: Tree[];
   http: HttpClient;
-  @Inject('BASE_URL') baseUrl: string
+  baseUrl: string;
   public nameSelected: string;
   public isSortedAsc: boolean;
+  public typeTrees: String[];
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+    this.http = http;
+    this.baseUrl = baseUrl;
+
+    http.get<String[]>(baseUrl + 'tree/getTypesArbres').subscribe(result => {
+      this.typeTrees = result;
+    }, error => console.error(error));
+
     http.get<Tree[]>(baseUrl + 'tree').subscribe(result => {
       this.trees = result;
     }, error => console.error(error));
@@ -37,8 +45,13 @@ export class ListTreeComponent implements OnInit {
     this.isSortedAsc = true;
   }
 
+  onChange(newValue) {
+    this.nameSelected = newValue;
+    this.filterByName();
+}
+
   filterByName() {
-    this.http.get<Tree[]>(this.baseUrl + 'tree/filterName/' + this.nameSelected).subscribe(result => {
+    this.http.get<Tree[]>(this.baseUrl + 'tree/filtreName/' + this.nameSelected).subscribe(result => {
       this.trees = result;
     }, error => console.error(error));
   }
