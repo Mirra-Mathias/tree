@@ -1,0 +1,41 @@
+<h1 id="tableLabel">Arbres</h1>
+
+<p>Liste d'arbres remarquables d'alignement à Paris</p>
+
+<p *ngIf="!trees"><em>Loading...</em></p>
+
+
+<div class="input-wrapper">
+
+  <div class="filter-arbre">
+    <span>Choisir arbre voulue</span>
+    <select name="" id="" [(ngModel)]="nameSelected">
+      <option *ngFor="let tree of trees" value="{{tree.fields.libellefrancais}}">{{tree.fields.libellefrancais}}</option>
+    </select>
+  </div>
+</div>
+
+<p>{{nameSelected}}</p>
+
+<button *ngIf='isSortedAsc' (click)="filterSort()">Trier du plus ancien au plus récent</button>
+<button *ngIf='!isSortedAsc' (click)="filterSort()">Trier du plus récent au plus ancien</button>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="trees">
+  <thead>
+    <tr>
+      <th>Libelle</th>
+      <th>Année Plantation</th>
+      <th>Hauteur en m</th>
+      <th>Stade Developpement</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tree of trees" class="rowClickable" [routerLink]="['/tree/', tree.recordid]">
+      <td>{{ tree.fields.libellefrancais }}</td>
+      <td>{{ tree.fields.dateplantation | date:'yyyy'}}</td>
+      <td>{{ tree.fields.hauteurenm }}</td>
+      <td>{{ tree.fields.stadedeveloppement }}</td>
+    </tr>
+  </tbody>
+</table>
+
