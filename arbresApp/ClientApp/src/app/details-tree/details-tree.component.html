@@ -1,11 +1,25 @@
-<h1>{{ tree | json}}</h1>
-
-<h1>{{ tree.libellefrancais }}</h1>
-<p>{{tree.datasetid}}</p>
-<p>{{tree.recordid}}</p>
-<p>{{tree.fields.libellefrancais}}</p>
-<p>{{tree.fields.circonferenceencm}}</p>
-<p>{{tree.fields.hauteurenm}}</p>
-<p>{{tree.fields.stadedeveloppement}}</p>
-<p>{{tree.fields.dateplantation}}</p>
-<p>{{tree.domanialite}}</p>
+<h1>{{ tree?.fields.libellefrancais }}</h1>
+<div class="wrapperTitre">
+    <div class="wrapper1">
+        <h2>RecordID</h2>
+        <span>{{tree?.recordid}}</span>
+        <h2>Libelle</h2>
+        <span>{{tree?.fields.libellefrancais}}</span>
+        <h2>Circonference en cm</h2>
+        <span>{{tree?.fields.circonferenceencm}}</span>
+        <h2>Hauteur en m</h2>
+        <span>{{tree?.fields.hauteurenm}}</span>
+    </div>
+    <div class="wrapper2">
+        <h2>Stade de développement</h2>
+        <span>{{tree?.fields.stadedeveloppement}}</span>
+        <h2>Date de plantation</h2>
+        <span>{{tree?.fields.dateplantation}}</span>
+        <h2>Dominialité</h2>
+    </div>
+    
+</div>
+<h1>Photo</h1>
+<div class="wrapperArbre">
+    <img class="imgArbre" src="{{tree?.link}}" alt="">
+</div>

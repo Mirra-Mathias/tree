@@ -81,6 +81,20 @@ namespace arbresApp.Controllers
             return trees;
         }
 
+        [HttpGet("getTypesArbres")]
+        public IEnumerable<string> GetTypesArbres(string libel)
+        {
+            var list = this.trees;
+            var query =
+                from tree in list
+                   group tree by tree.fields.libellefrancais 
+                   into mygroup
+                   select mygroup.FirstOrDefault().fields.libellefrancais;
+
+            IEnumerable<string> trees = query;
+            return trees;
+        }
+
         [HttpGet("trier/{etat}")]
         public IEnumerable<Tree> GetTrier(string etat)
         {

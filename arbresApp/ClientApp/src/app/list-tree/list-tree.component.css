@@ -14,11 +14,15 @@
 }
 
 .filter-arbre {
-    background: rgb(218, 231, 245);
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
     border-radius:5px;
     padding:0.5em;
     display: flex;
     align-items: baseline;
     gap: 1em;
     font-weight: bold;
+}
+
+button {
+    margin-bottom: 1em;
 }

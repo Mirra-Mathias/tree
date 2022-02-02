@@ -6,19 +6,19 @@
 
 
 <div class="input-wrapper">
-
+  
+  <button *ngIf='isSortedAsc' (click)="filterSort()">Trier du plus récent au plus ancien</button>
+  <button *ngIf='!isSortedAsc' (click)="filterSort()">Trier du plus ancien au plus récent</button>
+  
   <div class="filter-arbre">
-    <span>Choisir arbre voulue</span>
-    <select name="" id="" [(ngModel)]="nameSelected">
-      <option *ngFor="let tree of trees" value="{{tree.fields.libellefrancais}}">{{tree.fields.libellefrancais}}</option>
+    <span>Choisir un arbre</span>
+    <select name="" id="" [(ngModel)]="nameSelected" (ngModelChange)="onChange($event)">
+      <option *ngFor="let tree of typeTrees" value="{{tree}}">{{tree}}</option>
     </select>
   </div>
+
 </div>
 
-<p>{{nameSelected}}</p>
-
-<button *ngIf='isSortedAsc' (click)="filterSort()">Trier du plus ancien au plus récent</button>
-<button *ngIf='!isSortedAsc' (click)="filterSort()">Trier du plus récent au plus ancien</button>
 
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="trees">
   <thead>
@@ -30,7 +30,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let tree of trees" class="rowClickable" [routerLink]="['/tree/', tree.recordid]">
+    <tr *ngFor="let tree of trees" class="rowClickable" [routerLink]="['/details-tree/', tree.recordid]">
       <td>{{ tree.fields.libellefrancais }}</td>
       <td>{{ tree.fields.dateplantation | date:'yyyy'}}</td>
       <td>{{ tree.fields.hauteurenm }}</td>

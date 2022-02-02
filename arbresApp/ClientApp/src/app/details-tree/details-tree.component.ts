@@ -13,16 +13,16 @@ export class DetailsTreeComponent implements OnInit {
   public tree : Tree;
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, route : ActivatedRoute) {
-    this.currentRecordedId = route.snapshot.params.recordid;
+    this.currentRecordedId = route.snapshot.params.id;
 
-    http.get<Tree>(baseUrl + 'tree/'+ this.currentRecordedId).subscribe(result => {
-      this.tree = result;
-    }, error => console.error(error));
+    http.get<Tree>(baseUrl + 'tree/'+ this.currentRecordedId)
+      .subscribe(result => {
+        this.tree = result[0];
+      }, error => console.error(error));
 
   }
 
   ngOnInit() {
-
   }
 
 }
