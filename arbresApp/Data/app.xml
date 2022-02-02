@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<config>
-    <api-link>
-        https://public.opendatasoft.com/api/records/1.0/search/?dataset=arbresremarquablesparis2011&amp;q=&amp;rows=20&amp;sort=circonferenceencm&amp;facet=libellefrancais&amp;facet=espece&amp;facet=dateplantation&amp;facet=genre&amp;facet=hauteurenm&amp;facet=recordid
-    </api-link>
-</config>

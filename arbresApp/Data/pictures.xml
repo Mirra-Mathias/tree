@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pictures>
+    <picture>
+        <genre>Platane</genre>
+        <link>https://i.ibb.co/w7gmcvj/platane.jpg</link>
+    </picture>
+    <picture>
+        <genre>Sequoia</genre>
+        <link>https://i.ibb.co/g43VzNm/sequoia.jpg</link>
+    </picture>
+    <picture>
+        <genre>Noyer</genre>
+        <link>https://i.ibb.co/HLcTDyt/noyer.jpg</link>
+    </picture>
+    <picture>
+        <genre>Pterocarya</genre>
+        <link>https://i.ibb.co/WHG4bsQ/pterocarya.jpg</link>
+    </picture>
+</pictures>
