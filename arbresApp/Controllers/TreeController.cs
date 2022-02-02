@@ -25,9 +25,26 @@ namespace arbresApp.Controllers
         public TreeController()
         {
             string json = System.IO.File.ReadAllText(@"Data\app.json");
+            var XMLFile = XElement.Load(@"Data\pictures.xml");
+
             App jso = JsonSerializer.Deserialize<App>(json);
             var arbrestring = new WebClient().DownloadString(jso.link);
             Record rec = JsonSerializer.Deserialize<Record>(arbrestring);
+
+            foreach (var record in rec.records)
+            {
+                var picture = from element in XMLFile.Descendants("picture")
+                    where element.Element("genre").Value.Contains(record.fields.libellefrancais,
+                        StringComparison.InvariantCultureIgnoreCase)
+                    select element;
+
+                foreach (var VARIABLE in picture)
+                {
+                    record.link = "https" + VARIABLE.Value.Split("https")[1];
+                }
+                
+            }
+
             trees = rec.records;
         }
 
@@ -71,7 +88,7 @@ namespace arbresApp.Controllers
             var query =
                 from tree in list
                 select tree;
-            
+
             if (etat == "asc")
             {
                 query =

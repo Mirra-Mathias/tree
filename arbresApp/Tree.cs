@@ -20,6 +20,10 @@ namespace arbresApp
         public Field fields { get; set; }
         
         public string domanialite { get; set; }
+
+        public string link { get; set; }
+        
+        
     }
 
     public class Record
