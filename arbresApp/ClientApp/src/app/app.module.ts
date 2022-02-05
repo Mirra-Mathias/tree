@@ -5,20 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ListTreeComponent } from './list-tree/list-tree.component';
 import { DetailsTreeComponent } from './details-tree/details-tree.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     ListTreeComponent,
     DetailsTreeComponent
   ],
@@ -27,9 +19,7 @@ import { DetailsTreeComponent } from './details-tree/details-tree.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: '', component: ListTreeComponent, pathMatch: 'full' },
       { path: 'list-tree', component: ListTreeComponent },
       { path: 'details-tree/:id', component: DetailsTreeComponent },
     ])
